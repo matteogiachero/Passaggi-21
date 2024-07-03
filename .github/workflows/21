@@ -1,0 +1,101 @@
+TECNICHE DI PROGRAMMAZIONE (STRATEGIA DA SEGUIRE)
+L’interfaccia viene fornita dai professori
+Bisogna riempire controller, DAO e view
+Definisco la classe getAllQualcosa nel DAO (@staticmethod) e nella query inserisco la query richiesta dal punto della traccia.
+Query = “”” SELECT * FROM Tabella T WHERE condizione”””
+Cursor.execute(query)
+For row in cursor:
+	result.append(row[“QUALCOSA”])
+Definisco nel model la funzione (e importo il DAO) def getQualcosa(self):
+	return DAO.getAllQualcosa()
+Nel controller per riempire il dropdown definisco la funzione def fillDDQualcosa(self):
+	qualcosa = self._model.getQualcosa()
+	qualcosaDD = []
+	for q in qualcosa:
+	qualcosaDD.append(ft.dropdown.Option(q))
+	self._view._ddQualcosa.options = qualcosaDD
+	self._view.update_page
+Aggiungo in def load_interface (nella view):
+	self._controller.fillDDQualcosa()
+In base alla richiesta del testo creo nel controller il metodo def handleDDQualcosaSelection(self, e)
+Creo nella cartella model la @dataclass associata alla tabella nel DB al cui interno metto:
+def __hash__(self):
+	return hash(self.CHIAVEPRIMARIA)
+def __str__(self):
+	return f”{self.NAME}”
+Per creare il grafo richiesto nella __init__ del modello aggiungo self._grafo = nx.Graph() (DiGraph se orientato) e self._allQualcosa = [] e poi
+Def buildGraph(self):
+	self._grafo.add_nodes_from(self._allQualcosa)
+	for t1 in self._grafo.nodes:
+		for t2 in self._grafo.nodes:
+			if t1!= t2:
+				self._grafo.add_edge(t1,t2)
+Per stampare il grafo creo nel model defPrintGraphDetails(self):
+	print(f”Grafo creato con {len(self._grafo.nodes)} nodi e {len(self._grafo.edges)} archi.”)
+Per prendere più dati da una query creo una self._idMap = {} nella init del Model e la riempo quando leggo i nodi
+Per aggiungere i pesi nel metodo buildGraph
+qualcosaofQualcosa = DAO.getQualcosa(qualcosa, self._idMap)
+for e in self._grafo.edges:
+	self._grafo[e[0]][e[1]][“weight”] = qualcosa[e[0]] + qualcosa[e[1]]
+
+Per stampare i vicini creo in model def getSortedNeigbors(self,v0):
+	vicini = self._grafo.neighbors(v0)
+	viciniTuples = []
+	for v in vicini:
+		viciniTuples.append((v, self._grafo[v0][v][“weight”]))
+	viciniTuples.sort(key = lambda x: x[1], revers = True)
+	return viciniTuples	
+
+
+
+
+Una idMap in Python è un concetto che si riferisce tipicamente a una struttura dati utilizzata per mantenere una mappatura tra identificatori univoci e i loro valori associati. Questo può essere utile in vari contesti, come ad esempio la gestione di utenti, oggetti, o risorse in un sistema.
+
+Ecco alcune caratteristiche e funzionalità di una idMap:
+
+Associazione chiave-valore: Una idMap associa un identificatore unico (chiave) a un valore. Questo valore può essere qualsiasi oggetto Python, come stringhe, numeri, liste, o altri dizionari.
+
+Univocità delle chiavi: Ogni chiave all'interno di una idMap è unica. Questo garantisce che non ci siano due chiavi uguali che puntano a valori diversi.
+
+Accesso rapido: Le operazioni di accesso, inserimento, e cancellazione di elementi in una idMap sono generalmente molto efficienti. In Python, queste operazioni in un dizionario (che è l'implementazione comune di una idMap) hanno complessità temporale media di O(1).
+
+Iterazione: È possibile iterare su tutte le chiavi, i valori, o le coppie chiave-valore nella idMap.
+
+Per implementare una idMap in Python, si può utilizzare il tipo di dato dict, che è una implementazione built-in di un dizionario.
+
+Ecco un esempio di come creare e utilizzare una idMap in Python:
+
+python
+Copia codice
+# Creazione di una idMap
+id_map = {}
+
+# Aggiunta di coppie chiave-valore
+id_map[1] = "Alice"
+id_map[2] = "Bob"
+id_map[3] = "Charlie"
+
+# Accesso a un valore tramite chiave
+print(id_map[1])  # Output: Alice
+
+# Modifica di un valore
+id_map[2] = "Bob Smith"
+
+# Rimozione di una coppia chiave-valore
+del id_map[3]
+
+# Iterazione sulle chiavi
+for key in id_map:
+    print(key, id_map[key])
+
+# Verifica dell'esistenza di una chiave
+if 1 in id_map:
+    print("La chiave 1 esiste nella idMap")
+
+# Lunghezza della idMap
+print(len(id_map))  # Output: 2
+Applicazioni comuni di una idMap
+Gestione degli utenti: Associare un identificatore univoco a ciascun utente in un sistema.
+Catalogazione di risorse: Mappare identificatori di risorse (come ISBN per i libri) ai loro dati.
+Grafi: Rappresentare nodi di un grafo e le connessioni tra di essi.
+L'uso di dict rende la gestione delle mappature molto semplice ed efficiente, consentendo una rapida ricerca e manipolazione dei dati.
