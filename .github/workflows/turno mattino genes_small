@@ -1,0 +1,8 @@
+select g1.chromosome, g2.Chromosome, g1.GeneID as Gene1, g2.GeneID as Gene2, sum (distinct i.Expression_Corr)
+                    FROM genes g1, genes g2, interactions i 
+                    where  g1.GeneID = i.GeneID1 and g2.GeneID = i.GeneID2  
+                    and g2.Chromosome != g1.Chromosome
+                    and g2.Chromosome>0
+                    and g1.Chromosome>0
+                    group by g1.chromosome,g2.Chromosome 
+                    order by sum (distinct i.Expression_Corr) asc
