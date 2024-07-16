@@ -1,0 +1,5 @@
+select c1.localization, c2.Localization, c1.geneID, c2.GeneID, count(distinct i.`Type`)
+from classification c1, classification c2, interactions i 
+where c1.localization < c2.Localization  
+and ((c1.geneID = i.GeneID1 and c2.GeneID = i.GeneID2) or (c1.geneID = i.GeneID2 and c2.GeneID = i.GeneID1))
+group by c1.localization, c2.Localization
