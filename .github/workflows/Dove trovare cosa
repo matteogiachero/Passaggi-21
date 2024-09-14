@@ -1,0 +1,53 @@
+2024-07-04-A: Stampare il numero di componenti debolmente connesse. Inoltre, identificare la componente connessa di 
+dimensione maggiore, e stamparne i nodi – includendo il dettaglio della città in cui è avvenuto 
+l’avvistamento e la data. 
+
+2024-07-04-B: Stampare il numero di componenti connesse. Inoltre, identificare la componente connessa di dimensione 
+maggiore, e stamparne i nodi – includendo il dettaglio della città in cui è avvenuto l’avvistamento e la data. 
+
+2024-07-04-C: Stampare i 5 archi di peso maggiore, ordinati in ordine decrescente di peso (vedere esempi di soluzione). Per 
+ognuno di questi 5 archi stampare l’id del nodo di origine, l’id del nodo di destinazione, ed il peso. 
+
+2024-07-18-A: Alla creazione del grafo, stampare automaticamente le seguenti informazioni (vedere screenshots di 
+esempio):  
+• l numero di vertici ed archi del grafo.  
+• I 5 nodi col maggiore numero di archi uscenti col numero di archi uscenti ed il peso complessivo di 
+questi archi (la somma dei loro pesi). I nodi devono essere stampati in ordine decrescente per 
+numero di archi uscenti.
+
+Lab14:  Si visualizzi il numero di vertici ed archi del grafo, ed i valori minimo e massimo dei pesi degli archi. Permettere all’utente di inserire un valore soglia (S), verificando che tale valore sia compreso nell’intervallo 
+minimo-massimo calcolato al punto d. Alla pressione del bottone “Conta archi” stampare il numero di archi il cui peso è <S, ed il numero di archi il 
+cui peso è >S. 
+
+Lab13: Il peso dell’arco viene calcolato come il numero di avvistamenti che hanno la stessa forma (colonna “shape”) 
+selezionata dal menù a tendina Forma, e che si sono verificati nello stesso anno selezionato (da estrarre dalla 
+colonna “datetime”), nei due stati considerati. Stampare per ogni stato la somma dei pesi degli archi adiacenti.  
+
+Lab12: Si definisca come “volume di vendita” di un retailer la somma dei pesi di tutti gli archi ad esso incidenti. Si 
+visualizzi l’intero elenco di retailer, ordinati per valore decrescente. In questo elenco visualizzare il nome del 
+retailer ed il valore del volume di vendita corrispondente.
+
+Lab11:  i tre archi di peso maggiore (seguendo la convenzione 
+prodotto1, prodotto2, peso). Tra i vertici di questi tre archi, stampare i prodotti che sono presenti in più di uno dei tre archi
+
+Lab10: Stampare l’elenco degli stati, indicando per ciascuno il numero di stati confinanti (grado del vertice). Stampare il numero di componenti connesse nel grafo.
+
+Lab09: Stampare infine nell’area di testo sottostante: 
+a. il numero di vertici del grafo; 
+b. il numero di archi del grafo; 
+c. l’elenco di tutti gli archi con la relativa distanza; 
+
+Baseball: Permettere all’utente di selezionare, attraverso un secondo menu a tendina, una delle squadre esistenti nel 
+grafo, ed alla pressione del bottone “Dettagli” stampare per tale squadra l’elenco delle squadre adiacenti, ed 
+il peso degli archi corrispondenti, in ordine decrescente di peso.
+
+nyc-hotspot: Alla pressione del bottone “Analisi Grafo”, trovare e stampare i vertici del grafo che hanno il maggior 
+numero di vicini. Per ogni vertice, stampare il nome della località e il numero (massimo) di vicini.  
+
+iTunes:  Alla pressione del bottone 
+“Analisi Componente”, si stampino: 
+• la dimensione della componente connessa a cui appartiene a1; 
+• la durata complessiva (in minuti) di tutti gli album appartenenti alla componente connessa di a1. 
+
+ArtsMia:  Premendo il pulsante “Componente Connessa”, determinare la componente connessa del grafo che contiene 
+il vertice selezionato precedentemente e stampare il numero di vertici che la compongono.
